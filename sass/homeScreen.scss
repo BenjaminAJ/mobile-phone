@@ -1,0 +1,36 @@
+.homeScreen{
+    background-image: url('../images/backgroundImages/desktop-wallpaper-neon-top-35-best-neon-background-cool-neon-phone-thumbnail.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    .weatherWidget{
+
+    }
+    .homeIcons{
+        .btn{
+            padding: 1rem;
+            .bi{
+                padding: .5rem;
+                color: white;
+            }
+
+        }
+    }
+    .googleWidget{
+        .googleWrapper{
+            border-radius: 1rem;
+            background-color: white;
+            // gap: 5px;
+            width: 80% !important;
+            .googleForm{
+                border: none;
+                background: none;
+                outline: none;
+                width: 130px;
+            }
+             .bi{
+                color: black;
+            }
+        }
+    }
+}

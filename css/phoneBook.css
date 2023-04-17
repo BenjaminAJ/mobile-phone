@@ -1,0 +1,14 @@
+.homeScreen {
+  background-color: black;
+  height: 100%;
+  color: white;
+}
+.homeScreen .keypadWrapper {
+  color: inherit;
+}
+.homeScreen .keypadWrapper #keypadInput {
+  border: none;
+  outline: none;
+  background: none;
+  color: inherit;
+}

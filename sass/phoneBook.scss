@@ -1,0 +1,18 @@
+.homeScreen {
+    background-color: black;
+    height: 100%;
+    color: white;
+
+    .keypadWrapper {
+        color: inherit;
+
+        #keypadInput {
+            border: none;
+            outline: none;
+            background: none;
+            color: inherit;
+        }
+
+        .buttonWrapper {}
+    }
+}
