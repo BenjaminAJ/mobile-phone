@@ -12,3 +12,7 @@
   background: none;
   color: inherit;
 }
+.homeScreen .searchResults {
+  height: 100px;
+  overflow-y: scroll;
+}

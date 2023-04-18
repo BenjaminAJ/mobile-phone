@@ -1,11 +1,13 @@
 const powerOnBtn = document.querySelector('.powerOn');
-const phoneContainer = document.querySelector('.phoneContainer');
+const phoneContainer1 = document.querySelector('.phoneContainer');
 const samsung = document.querySelector('.samsung');
 const phoneWrapper = document.querySelector('.phoneWrapper');
 
 powerOnBtn.addEventListener('click', powerOnOROff);
 
-samsung.style.display = 'none';
+if (samsung) {
+    samsung.style.display = 'none';
+}
 
 function powerOnOROff() {
     if (classCheck('.phoneContainer', '.bg-dark')) {

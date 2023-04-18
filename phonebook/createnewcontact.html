@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Screen Mobile phone</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" defer
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/createnewcontact.css">
+
+</head>
+<body>
+    <div class="card phoneWrapper text-white bg-dark rounded mt-5">
+        <div class="card-body d-flex justify-content-center align-items-center flex-column">
+            <button class="btn btn-secondary card-text powerOn"><i class="bi bi-power"></i></button>
+            <div class="mt-5 col-6 phoneContainer rounded bg-dark justify-content-center align-items-center" style="height: 500px; width: 300px;">
+                
+                <div class="homeScreen rounded d-flex flex-column justify-content-between container">
+                    <!-- Wrapper container -->
+                    <div class="container formWrapper py-4 rounded">
+
+                        <!-- Bootstrap 5 starter form -->
+                        <form id="contactForm">
+
+                            <!-- Name input -->
+                            <div class="mb-3">
+                                <label class="form-label" for="name">Name</label>
+                                <input class="form-control" id="name" type="text" placeholder="Name" />
+                            </div>
+
+                            <!-- Mobile Phone number input -->
+                            <div class="mb-3">
+                                <label class="form-label" for="phoneNumber">Email Address</label>
+                                <input class="form-control" id="phoneNumber" type="tel"
+                                    placeholder="Phone Number" />
+                                
+                            </div>
+
+                            <!-- Email address input -->
+                            <div class="mb-3">
+                                <label class="form-label" for="emailAddress">Email Address</label>
+                                <input class="form-control" id="emailAddress" type="email"
+                                    placeholder="Email Address" />
+                            </div>
+
+
+                            <!-- Form submit button -->
+                            <div class="d-flex justify-content-between">
+                                <button class="col-auto btn text-white" type="submit">Cancel</button>
+                                <button class="col-auto btn text-white" type="submit">Save</button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./js/script.js"></script>
+</html>

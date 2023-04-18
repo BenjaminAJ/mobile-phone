@@ -12,7 +12,8 @@ body{
         .card-body{
             .phoneContainer{
                 .powerOn{
-    
+                    position: relative;
+                    transform: translateX(200px);
                 }
 
             }

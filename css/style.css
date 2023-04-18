@@ -17,3 +17,8 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
 }
+body .card .card-body .phoneContainer .powerOn {
+  position: relative;
+  -webkit-transform: translateX(200px);
+          transform: translateX(200px);
+}
