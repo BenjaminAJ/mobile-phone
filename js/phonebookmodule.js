@@ -4,12 +4,10 @@ const saveContactBtn = document.querySelector('#saveContact');
 const homeScreen = document.querySelector('.homeScreen');
 const phoneContainer = document.querySelector('.phoneContainer');
 const addToContactBtn = document.querySelector('.bi-plus');
+const showContactsBtn = document.querySelector('.showContacts');
 const searchBtn = document.querySelector('.bi-search');
 const searchResults = document.querySelector('.searchResults');
 const dialBtn = document.getElementById('dial');
-const nameInput = document.getElementById('name');
-const phoneNumberInput = document.getElementById('phoneNumber');
-const emailAddressInput = document.getElementById('emailAddress');
 const createContactBtn = document.querySelector('.createContact');
 const updateContactBtn = document.querySelector('.updateContact');
 const deleteBtn = document.getElementById('deleteBtn');
@@ -23,8 +21,10 @@ let userinput;
 let searchResultsarry;
 searchResults.style.display = 'none';
 
-
-localStorage.setItem('contactarray', JSON.stringify(contactarray));
+setTimeout(() => {
+    
+    localStorage.setItem('contactarray', JSON.stringify(contactarray));
+}, 1000);
 
 for (let index = 0; index < keys.length; index++) {
     keys[index].addEventListener('click', function (params) {
@@ -39,7 +39,8 @@ for (let index = 0; index < keys.length; index++) {
 dialBtn.addEventListener('click', dial);
 deleteBtn.addEventListener('click', deleteItem);
 searchBtn.addEventListener('click', searchContacts);
-addToContactBtn.addEventListener('click', addToContacts);
+// addToContactBtn.addEventListener('click', addToContacts);
+showContactsBtn.addEventListener('click', showAllContacts);
 
 function dial(params) {
     console.log('I am dialing...');
@@ -146,7 +147,7 @@ function addToContacts(params) {
 
         <!-- Form submit button -->
         <div class="d-flex justify-content-between">
-            <button class="col-auto btn text-white" type="button">Cancel</button>
+            <button class="col-auto btn text-white" type="button" onclick="dismissSaveContact()">Cancel</button>
             <button class="col-auto btn text-white" id="saveContact" onclick="saveToContact()" type="button">Save</button>
         </div>
 
@@ -167,6 +168,12 @@ function createNewContact(params) {
     addToContacts();
 }
 function saveToContact(params) {
+    const nameInput = document.getElementById('name');
+    const phoneNumberInput = document.getElementById('phoneNumber');
+    const emailAddressInput = document.getElementById('emailAddress');
+    const formWrapper = document.querySelector('.formWrapper');
+
+
     console.log('I am saving');
     contactobj.name = nameInput.value;
     contactobj.phonenumber = phoneNumberInput.value;
@@ -177,4 +184,24 @@ function saveToContact(params) {
     console.log(contactarray);
 
     localStorage.setItem('contactarray', JSON.stringify(contactarray));
+
+    homeScreen.style.display = 'block';
+    console.log(homeScreen);
+    formWrapper.style.display = 'none';
+    
+}
+
+function showAllContacts(params) {
+    let allContacts = localStorage.getItem('contactarray');
+    allContacts = JSON.parse(allContacts);
+
+    console.log(allContacts);
+}
+
+function dismissSaveContact(params) {
+    const formWrapper = document.querySelector('.formWrapper');
+    
+    formWrapper.style.display = 'none';
+    homeScreen.style.display = 'block';
+
 }
