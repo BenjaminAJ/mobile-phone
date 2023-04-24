@@ -5,6 +5,8 @@ const homeScreen = document.querySelector('.homeScreen');
 const phoneContainer = document.querySelector('.phoneContainer');
 const addToContactBtn = document.querySelector('.bi-plus');
 const showContactsBtn = document.querySelector('.showContacts');
+const showKeypadBtn = document.querySelector('.showKeypad');
+const showRecentCallsBtn = document.querySelector('.showRecentCalls');
 const searchBtn = document.querySelector('.bi-search');
 const searchResults = document.querySelector('.searchResults');
 const dialBtn = document.getElementById('dial');
@@ -41,6 +43,8 @@ deleteBtn.addEventListener('click', deleteItem);
 searchBtn.addEventListener('click', searchContacts);
 // addToContactBtn.addEventListener('click', addToContacts);
 showContactsBtn.addEventListener('click', showAllContacts);
+showKeypadBtn.addEventListener('click', showKeypad);
+showRecentCallsBtn.addEventListener('click', showRecentCalls);
 
 function dial(params) {
     console.log('I am dialing...');
@@ -196,6 +200,58 @@ function showAllContacts(params) {
     allContacts = JSON.parse(allContacts);
 
     console.log(allContacts);
+    
+    homeScreen.style.display = 'none';
+
+    allContacts.forEach(element => {
+        homeScreen.innerHTML += `
+            <div class="row">
+                <p>${element.name}</p>
+                <p>${element.phonenumber}</p>
+            </div>
+        `;
+    });
+}
+function showKeypad(params) {
+//     homeScreen.innerHTML += `
+//     <div class="container keypadWrapper">
+//     <div class="row align-items-center justify-content-center">
+//         <div class="col-auto mb-3">
+//             <input class="text-center" id="keypadInput" type="text">
+//             <i id="deleteBtn" class="bi btn text-white bi-backspace"></i>
+//         </div>
+//     </div>
+//     <div class="row align-items-center justify-content-center buttonWrapper gap-3">
+//         <div class="row align-items-center justify-content-center">
+//             <div class="col-3"><button class="btn keys btn-dark">1</button></div>
+//             <div class="col-3"><button class="btn keys btn-dark">2</button></div>
+//             <div class="col-3"><button class="btn keys btn-dark">3</button></div>
+//         </div>
+//         <div class="row justify-content-center">
+//             <div class="col-3"><button class="btn keys btn-dark">4</button></div>
+//             <div class="col-3"><button class="btn keys btn-dark">5</button></div>
+//             <div class="col-3"><button class="btn keys btn-dark">6</button></div>
+//         </div>
+//         <div class="row justify-content-center">
+//             <div class="col-3"><button class="btn keys btn-dark">7</button></div>
+//             <div class="col-3"><button class="btn keys btn-dark">8</button></div>
+//             <div class="col-3"><button class="btn keys btn-dark">9</button></div>
+//         </div>
+//         <div class="row justify-content-center">
+//             <div class="col-3"><button class="btn keys btn-dark">*</button></div>
+//             <div class="col-3"><button class="btn keys btn-dark">0</button></div>
+//             <div class="col-3"><button class="btn keys btn-dark">#</button></div>
+//         </div>
+//     </div>
+// </div>
+
+//     `;
+    console.log('Return to keypad...');
+}
+
+function showRecentCalls(params) {
+    console.log('Displaying call logs...');
+    
 }
 
 function dismissSaveContact(params) {
