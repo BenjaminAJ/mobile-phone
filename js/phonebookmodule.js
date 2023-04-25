@@ -13,6 +13,9 @@ const dialBtn = document.getElementById('dial');
 const createContactBtn = document.querySelector('.createContact');
 const updateContactBtn = document.querySelector('.updateContact');
 const deleteBtn = document.getElementById('deleteBtn');
+const formWrapper = document.querySelector('.formWrapper');
+const phoneNumberInput = document.querySelector('.phoneNumber');
+
 
 let contactarray = [{ phonenumber: 8010120398, name: 'Ben' }, { phonenumber: 80101223453, name: 'Fred' }, { phonenumber: 80101223453, name: 'Adebayo' }];
 let contactobj = {
@@ -127,51 +130,59 @@ setInterval(() => {
 
 function addToContacts(params) {
     console.log('Adding');
-    homeScreen.style.display = 'none';
-    let updatePhoneNumber = keypadInput.value
+    let updatePhoneNumber = keypadInput.value;
+    homeScreen.classList.add('d-none');
+    formWrapper.classList.remove('d-none');
     console.log(updatePhoneNumber);
+    try {
+        phoneNumberInput.value = updatePhoneNumber;
+    } catch (error) {
+        console.error('cannot read Phone number input')
+    }
 
-    phoneContainer.innerHTML = `
-    <div class="container formWrapper py-4 rounded">
-    <h2 class="text-center mt-2">PhoneBook</h2>
+    console.log(formWrapper);
+
+//     phoneContainer.innerHTML += `
+//     <div class="container formWrapper py-4 rounded">
+//     <h2 class="text-center mt-2">PhoneBook</h2>
 
 
-    <!-- Bootstrap 5 starter form -->
-    <form id="contactForm">
+//     <!-- Bootstrap 5 starter form -->
+//     <form id="contactForm">
 
-        <!-- Name input -->
-        <div class="mb-3">
-            <label class="form-label" for="name">Name</label>
-            <input class="form-control" id="name" required type="text" placeholder="Name" />
-        </div>
-        <!-- Mobile Phone number input -->
-        <div class="mb-3">
-            <label class="form-label" for="phoneNumber">Phone Number</label>
-            <input class="form-control" required id="phoneNumber" value="${updatePhoneNumber}" type="tel"
-                placeholder="Phone Number" />
+//         <!-- Name input -->
+//         <div class="mb-3">
+//             <label class="form-label" for="name">Name</label>
+//             <input class="form-control" id="name" required type="text" placeholder="Name" />
+//         </div>
+//         <!-- Mobile Phone number input -->
+//         <div class="mb-3">
+//             <label class="form-label" for="phoneNumber">Phone Number</label>
+//             <input class="form-control" required id="phoneNumber" value="${updatePhoneNumber}" type="tel"
+//                 placeholder="Phone Number" />
             
-        </div>
+//         </div>
 
-        <!-- Email address input -->
-        <div class="mb-3">
-            <label class="form-label" for="emailAddress">Email Address</label>
-            <input class="form-control" id="emailAddress" type="email"
-                placeholder="Email Address" />
-        </div>
-
-
-        <!-- Form submit button -->
-        <div class="d-flex justify-content-between">
-            <button class="col-auto btn text-white" type="button" onclick="dismissSaveContact()">Cancel</button>
-            <button class="col-auto btn text-white" id="saveContact" onclick="saveToContact()" type="button">Save</button>
-        </div>
-
-    </form>
-
-</div>
+//         <!-- Email address input -->
+//         <div class="mb-3">
+//             <label class="form-label" for="emailAddress">Email Address</label>
+//             <input class="form-control" id="emailAddress" type="email"
+//                 placeholder="Email Address" />
+//         </div>
 
 
-`;
+//         <!-- Form submit button -->
+//         <div class="d-flex justify-content-between">
+//             <button class="col-auto btn text-white" type="button" onclick="dismissSaveContact()">Cancel</button>
+//             <button class="col-auto btn text-white" id="saveContact" onclick="saveToContact()" type="button">Save</button>
+//         </div>
+
+//     </form>
+
+// </div>
+
+
+// `;
 }
 
 if (createContactBtn) {
@@ -200,7 +211,7 @@ function saveToContact(params) {
         alert("Phone Number must be filled out");
         return
     }
-    
+
     contactobj.name = nameInput.value;
     contactobj.phonenumber = phoneNumberInput.value;
     contactobj.emailAddress = emailAddressInput.value;
@@ -210,10 +221,13 @@ function saveToContact(params) {
     console.log(contactarray);
 
     localStorage.setItem('contactarray', JSON.stringify(contactarray));
+    
+    formWrapper.classList.add('d-none');
 
-    homeScreen.style.display = 'block';
+    // formWrapper.style.display = 'none';
+
+    homeScreen.classList.remove('d-none');
     console.log(homeScreen);
-    formWrapper.style.display = 'none';
 
 }
 
@@ -290,7 +304,7 @@ function showRecentCalls(params) {
 function dismissSaveContact(params) {
     const formWrapper = document.querySelector('.formWrapper');
 
-    formWrapper.style.display = 'none';
-    homeScreen.style.display = 'block';
+    formWrapper.classList.add('d-none');
+    homeScreen.classList.remove('d-none');
 
 }

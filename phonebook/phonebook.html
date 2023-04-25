@@ -84,9 +84,47 @@
                         <div class="col-4"><button class="btn"></button></div>
                         <div class="col-4"><button class="btn"></button></div>
                         <div class="col-4"><button class="btn"></button></div>
-                    </div>
+                    </div>                    
 
                 </div>
+                <div class="container d-none formWrapper py-4 rounded">
+                    <h2 class="text-center mt-2">PhoneBook</h2>
+                
+                
+                    <!-- Bootstrap 5 starter form -->
+                    <form id="contactForm">
+                
+                        <!-- Name input -->
+                        <div class="mb-3">
+                            <label class="form-label" for="name">Name</label>
+                            <input class="form-control" id="name" required type="text" placeholder="Name" />
+                        </div>
+                        <!-- Mobile Phone number input -->
+                        <div class="mb-3">
+                            <label class="form-label" for="phoneNumber">Phone Number</label>
+                            <input class="form-control" required id="phoneNumber" type="tel"
+                                placeholder="Phone Number" />
+                            
+                        </div>
+                
+                        <!-- Email address input -->
+                        <div class="mb-3">
+                            <label class="form-label" for="emailAddress">Email Address</label>
+                            <input class="form-control" id="emailAddress" type="email"
+                                placeholder="Email Address" />
+                        </div>
+                
+                
+                        <!-- Form submit button -->
+                        <div class="d-flex justify-content-between">
+                            <button class="col-auto btn text-white" type="button" onclick="dismissSaveContact()">Cancel</button>
+                            <button class="col-auto btn text-white" id="saveContact" onclick="saveToContact()" type="button">Save</button>
+                        </div>
+                
+                    </form>
+                
+                </div>
+
             </div>
         </div>
     </div>
