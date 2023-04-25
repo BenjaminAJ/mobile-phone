@@ -14,7 +14,6 @@ const createContactBtn = document.querySelector('.createContact');
 const updateContactBtn = document.querySelector('.updateContact');
 const deleteBtn = document.getElementById('deleteBtn');
 const formWrapper = document.querySelector('.formWrapper');
-const phoneNumberInput = document.querySelector('.phoneNumber');
 
 
 let contactarray = [{ phonenumber: 8010120398, name: 'Ben' }, { phonenumber: 80101223453, name: 'Fred' }, { phonenumber: 80101223453, name: 'Adebayo' }];
@@ -133,14 +132,13 @@ function addToContacts(params) {
     let updatePhoneNumber = keypadInput.value;
     homeScreen.classList.add('d-none');
     formWrapper.classList.remove('d-none');
-    console.log(updatePhoneNumber);
+    const phoneNumberInput = document.querySelector('#phoneNumber');
     try {
         phoneNumberInput.value = updatePhoneNumber;
     } catch (error) {
         console.error('cannot read Phone number input')
     }
 
-    console.log(formWrapper);
 
 //     phoneContainer.innerHTML += `
 //     <div class="container formWrapper py-4 rounded">
