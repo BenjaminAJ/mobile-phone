@@ -14,7 +14,7 @@ const createContactBtn = document.querySelector('.createContact');
 const updateContactBtn = document.querySelector('.updateContact');
 const deleteBtn = document.getElementById('deleteBtn');
 
-let contactarray=[{phonenumber: 8010120398, name : 'Ben'},{phonenumber: 80101223453, name : 'Fred'}];
+let contactarray=[{phonenumber: 8010120398, name : 'Ben'},{phonenumber: 80101223453, name : 'Fred'}, {phonenumber: 80101223453, name : 'Adebayo'}];
 let contactobj = {
     name : '',
     phonenumber : '',
@@ -201,13 +201,24 @@ function showAllContacts(params) {
 
     console.log(allContacts);
     
-    homeScreen.style.display = 'none';
+    homeScreen.innerHTML = '';
+    homeScreen.classList.toggle("justify-content-between");
 
-    allContacts.forEach(element => {
+    let SortedContacts = allContacts.sort(function (a, b) {
+        if (a.name < b.name) {
+          return -1;
+        }
+        if (a.name > b.name) {
+          return 1;
+        }
+        return 0;
+      });
+
+      SortedContacts.forEach(element => {
         homeScreen.innerHTML += `
-            <div class="row">
-                <p>${element.name}</p>
-                <p>${element.phonenumber}</p>
+            <div class="col-12 text-center">
+                <span>${element.name}:</span>
+                <span>${element.phonenumber}</span>
             </div>
         `;
     });
