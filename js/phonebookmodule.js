@@ -14,17 +14,17 @@ const createContactBtn = document.querySelector('.createContact');
 const updateContactBtn = document.querySelector('.updateContact');
 const deleteBtn = document.getElementById('deleteBtn');
 
-let contactarray=[{phonenumber: 8010120398, name : 'Ben'},{phonenumber: 80101223453, name : 'Fred'}, {phonenumber: 80101223453, name : 'Adebayo'}];
+let contactarray = [{ phonenumber: 8010120398, name: 'Ben' }, { phonenumber: 80101223453, name: 'Fred' }, { phonenumber: 80101223453, name: 'Adebayo' }];
 let contactobj = {
-    name : '',
-    phonenumber : '',
+    name: '',
+    phonenumber: '',
 };
 let userinput;
 let searchResultsarry;
 searchResults.style.display = 'none';
 
 setTimeout(() => {
-    
+
     localStorage.setItem('contactarray', JSON.stringify(contactarray));
 }, 1000);
 
@@ -32,9 +32,9 @@ for (let index = 0; index < keys.length; index++) {
     keys[index].addEventListener('click', function (params) {
         keypadInput.value += keys[index].innerHTML;
         searchContacts();
-        
+
     });
-    
+
 }
 
 // saveContactBtn.addEventListener('click', saveContact)
@@ -48,9 +48,9 @@ showRecentCallsBtn.addEventListener('click', showRecentCalls);
 
 function dial(params) {
     console.log('I am dialing...');
-    homeScreen.style.display = none;
-    
-}  
+    homeScreen.style.display = 'none';
+
+}
 function endDial(params) {
     console.log('end call');
 }
@@ -60,53 +60,64 @@ function searchContacts(keypadInput) {
     let storedContacts = localStorage.getItem('contactarray');
     let searchResultsarry = JSON.parse(storedContacts);
     searchResultsarry = searchResultsarry.filter(contact => checkContacts(contact, userinput));
-    if (searchResultsarry) {
+    if (searchResultsarry.length > 0) {
         searchResultsarry.forEach(element => {
             if (searchResults.innerHTML.match(`${element.phonenumber}`)) {
                 return
             }
-            else{
+            else {
                 searchResults.innerHTML += `<div class='col-12'>
                     ${element.name}
                     ${element.phonenumber}
                 </div>`;
             }
         });
-        
+
     }
-  }
-  
-  function checkContacts(contact, userinput) {
-    userinput = keypadInput.value;
+}
+
+function checkContacts(contact, userinput) {
+    userinput = (keypadInput.value).trim();
     const searchQuery = userinput;
     const phoneNumber = contact.phonenumber;
     if (typeof phoneNumber !== "number") {
-      return false;
+        return false;
     }
     // return (phoneNumber ==  searchQuery);
     return String(phoneNumber).includes(userinput)
-  }  
-  function deleteItem(params) {
+}
+function deleteItem(params) {
     let previousContent = keypadInput.value;
-    let newContent = previousContent.slice(0,-1);
+    let newContent = previousContent.slice(0, -1);
 
     keypadInput.value = newContent;
     searchContacts()
-    if (keypadInput.value === '' ) {
+    if (keypadInput.value === '') {
         searchResults.innerHTML = ''
         searchResults.style.display = 'none';
 
     }
-  
-} 
+
+}
 
 function checkContent(params) {
     if (keypadInput.value == '') {
         addToContactBtn.classList.add('d-none');
     }
-    else{
+    else {
         addToContactBtn.classList.remove('d-none');
     }
+
+
+    // To be removed
+    if (searchResults.innerHTML == '') {
+        searchResults.classList.add('d-none');
+    }
+    else {
+        searchResults.classList.remove('d-none');
+
+    }
+
 }
 checkContent();
 
@@ -179,10 +190,21 @@ function saveToContact(params) {
 
 
     console.log('I am saving');
+    if (nameInput.value == '') {
+        console.error('No name');
+        alert("Name must be filled out");
+        return
+    }
+    if (phoneNumberInput.value == '') {
+        console.error('No phone number');
+        alert("Phone Number must be filled out");
+        return
+    }
+    
     contactobj.name = nameInput.value;
     contactobj.phonenumber = phoneNumberInput.value;
     contactobj.emailAddress = emailAddressInput.value;
-    
+
     contactarray.push(contactobj);
     console.log(contactobj);
     console.log(contactarray);
@@ -192,7 +214,7 @@ function saveToContact(params) {
     homeScreen.style.display = 'block';
     console.log(homeScreen);
     formWrapper.style.display = 'none';
-    
+
 }
 
 function showAllContacts(params) {
@@ -200,21 +222,21 @@ function showAllContacts(params) {
     allContacts = JSON.parse(allContacts);
 
     console.log(allContacts);
-    
+
     homeScreen.innerHTML = '';
     homeScreen.classList.toggle("justify-content-between");
 
     let SortedContacts = allContacts.sort(function (a, b) {
         if (a.name < b.name) {
-          return -1;
+            return -1;
         }
         if (a.name > b.name) {
-          return 1;
+            return 1;
         }
         return 0;
-      });
+    });
 
-      SortedContacts.forEach(element => {
+    SortedContacts.forEach(element => {
         homeScreen.innerHTML += `
             <div class="col-12 text-center">
                 <span>${element.name}:</span>
@@ -224,50 +246,50 @@ function showAllContacts(params) {
     });
 }
 function showKeypad(params) {
-//     homeScreen.innerHTML += `
-//     <div class="container keypadWrapper">
-//     <div class="row align-items-center justify-content-center">
-//         <div class="col-auto mb-3">
-//             <input class="text-center" id="keypadInput" type="text">
-//             <i id="deleteBtn" class="bi btn text-white bi-backspace"></i>
-//         </div>
-//     </div>
-//     <div class="row align-items-center justify-content-center buttonWrapper gap-3">
-//         <div class="row align-items-center justify-content-center">
-//             <div class="col-3"><button class="btn keys btn-dark">1</button></div>
-//             <div class="col-3"><button class="btn keys btn-dark">2</button></div>
-//             <div class="col-3"><button class="btn keys btn-dark">3</button></div>
-//         </div>
-//         <div class="row justify-content-center">
-//             <div class="col-3"><button class="btn keys btn-dark">4</button></div>
-//             <div class="col-3"><button class="btn keys btn-dark">5</button></div>
-//             <div class="col-3"><button class="btn keys btn-dark">6</button></div>
-//         </div>
-//         <div class="row justify-content-center">
-//             <div class="col-3"><button class="btn keys btn-dark">7</button></div>
-//             <div class="col-3"><button class="btn keys btn-dark">8</button></div>
-//             <div class="col-3"><button class="btn keys btn-dark">9</button></div>
-//         </div>
-//         <div class="row justify-content-center">
-//             <div class="col-3"><button class="btn keys btn-dark">*</button></div>
-//             <div class="col-3"><button class="btn keys btn-dark">0</button></div>
-//             <div class="col-3"><button class="btn keys btn-dark">#</button></div>
-//         </div>
-//     </div>
-// </div>
+    //     homeScreen.innerHTML += `
+    //     <div class="container keypadWrapper">
+    //     <div class="row align-items-center justify-content-center">
+    //         <div class="col-auto mb-3">
+    //             <input class="text-center" id="keypadInput" type="text">
+    //             <i id="deleteBtn" class="bi btn text-white bi-backspace"></i>
+    //         </div>
+    //     </div>
+    //     <div class="row align-items-center justify-content-center buttonWrapper gap-3">
+    //         <div class="row align-items-center justify-content-center">
+    //             <div class="col-3"><button class="btn keys btn-dark">1</button></div>
+    //             <div class="col-3"><button class="btn keys btn-dark">2</button></div>
+    //             <div class="col-3"><button class="btn keys btn-dark">3</button></div>
+    //         </div>
+    //         <div class="row justify-content-center">
+    //             <div class="col-3"><button class="btn keys btn-dark">4</button></div>
+    //             <div class="col-3"><button class="btn keys btn-dark">5</button></div>
+    //             <div class="col-3"><button class="btn keys btn-dark">6</button></div>
+    //         </div>
+    //         <div class="row justify-content-center">
+    //             <div class="col-3"><button class="btn keys btn-dark">7</button></div>
+    //             <div class="col-3"><button class="btn keys btn-dark">8</button></div>
+    //             <div class="col-3"><button class="btn keys btn-dark">9</button></div>
+    //         </div>
+    //         <div class="row justify-content-center">
+    //             <div class="col-3"><button class="btn keys btn-dark">*</button></div>
+    //             <div class="col-3"><button class="btn keys btn-dark">0</button></div>
+    //             <div class="col-3"><button class="btn keys btn-dark">#</button></div>
+    //         </div>
+    //     </div>
+    // </div>
 
-//     `;
+    //     `;
     console.log('Return to keypad...');
 }
 
 function showRecentCalls(params) {
     console.log('Displaying call logs...');
-    
+
 }
 
 function dismissSaveContact(params) {
     const formWrapper = document.querySelector('.formWrapper');
-    
+
     formWrapper.style.display = 'none';
     homeScreen.style.display = 'block';
 
