@@ -33,6 +33,9 @@ setTimeout(() => {
 for (let index = 0; index < keys.length; index++) {
     keys[index].addEventListener('click', function (params) {
         keypadInput.value += keys[index].innerHTML;
+        if (navigator.vibrate) {
+            window.navigator.vibrate(2000); // vibrate for 2000ms
+        }
         searchContacts();
 
     });
@@ -50,7 +53,7 @@ showRecentCallsBtn.addEventListener('click', showRecentCalls);
 
 function dial(params) {
     console.log('I am dialing...');
-    homeScreen.style.display = 'none';
+    // homeScreen.style.display = 'none';
 
 }
 function endDial(params) {
@@ -76,6 +79,7 @@ function searchContacts(keypadInput) {
         });
 
     }
+
 }
 
 function checkContacts(contact, userinput) {
@@ -93,7 +97,7 @@ function deleteItem(params) {
     let newContent = previousContent.slice(0, -1);
 
     keypadInput.value = newContent;
-    searchContacts()
+    searchContacts();
     if (keypadInput.value === '') {
         searchResults.innerHTML = ''
         searchResults.style.display = 'none';
@@ -306,3 +310,8 @@ function dismissSaveContact(params) {
     homeScreen.classList.remove('d-none');
 
 }
+
+// navigator.vibrate(200); // vibrate for 200ms
+// navigator.vibrate([
+//   100, 30, 100, 30, 100, 30, 200, 30, 200, 30, 200, 30, 100, 30, 100, 30, 100,
+// ]); // Vibrate 'SOS' in Morse.

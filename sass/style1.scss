@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.phoneWrapper{
+    background-color: #000;
+    color: white;
+    width: 300px;
+    height: 500px;
+    border-radius: 30px;
+    padding: 10px;
+    .homeScreen{
+        // background-image: ; //wallpaper
+        .notificationBar{
+            font-size: 10px;
+        }
+
+        .mainScreen{
+            .homePage{
+                .weatherWidget{
+                    margin-top: 100px;
+                    font-size: 12px;
+                    .cloudWrapper{
+                        .weatherInfo{
+                            
+                        }
+                    }
+                }
+                .appIconsWrapper{
+                    
+                }
+            }
+        }
+    }
+
+}
