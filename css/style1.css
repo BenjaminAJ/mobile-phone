@@ -6,12 +6,24 @@
 }
 
 .phoneWrapper {
+  position: relative;
   background-color: #000;
   color: white;
   width: 300px;
   height: 500px;
   border-radius: 30px;
   padding: 10px;
+}
+.phoneWrapper .powerOff {
+  position: absolute;
+  top: 50px;
+  right: -5px;
+  padding: 2px;
+  width: 10px;
+  height: 30px;
+  border-radius: 2px;
+  background-color: #212529;
+  cursor: pointer;
 }
 .phoneWrapper .homeScreen .notificationBar {
   font-size: 10px;

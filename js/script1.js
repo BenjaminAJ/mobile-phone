@@ -1,3 +1,5 @@
+const powerOffBtn = document.querySelector('.powerOff');
+const homeScreen = document.querySelector('.homeScreen');
 const timeDisplay = document.querySelectorAll('.time');
 const phoneBook = document.querySelector('.phoneBook');
 const homePage = document.querySelector('.homePage');
@@ -32,4 +34,10 @@ setInterval(() => {
 phoneBook.addEventListener('click', () => {
     homePage.classList.toggle('d-none');
     phoneBookPage.classList.toggle('d-none');
+})
+
+// powerOff
+
+powerOffBtn.addEventListener('click', () => {
+    homeScreen.classList.toggle('d-none');
 })
