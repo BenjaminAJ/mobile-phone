@@ -1,4 +1,7 @@
 const timeDisplay = document.querySelectorAll('.time');
+const phoneBook = document.querySelector('.phoneBook');
+const homePage = document.querySelector('.homePage');
+const phoneBookPage = document.querySelector('.phoneBookPage');
 
 //Time
 setInterval(() => {
@@ -23,3 +26,10 @@ setInterval(() => {
         element.innerHTML = date.getHours() + ' : ' + minutes;
     });
 }, 1000);
+
+//PhoneBook
+
+phoneBook.addEventListener('click', () => {
+    homePage.classList.toggle('d-none');
+    phoneBookPage.classList.toggle('d-none');
+})
